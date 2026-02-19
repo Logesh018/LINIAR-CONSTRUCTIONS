@@ -6,9 +6,10 @@ const PackagesPricing = () => {
       name: "Basic Package",
       price: "1,499",
       icon: "🏗️",
-      color: "from-blue-500 to-blue-600",
+      color: "from-blue-700 to-blue-800",
       description: "Perfect for budget-conscious homeowners seeking quality construction",
-      image: "https://images.unsplash.com/photo-1590739225024-54cd5c87ae2e?w=600&q=80",
+      image:
+        "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YnVpbGRpbmclMjBjb25zdHJ1Y3Rpb258ZW58MHx8MHx8fDA%3D",
       features: [
         "Standard quality materials",
         "Basic finishing work",
@@ -88,16 +89,16 @@ const PackagesPricing = () => {
           <p className="text-blue-100 text-lg mt-6 max-w-2xl mx-auto">
             Clear, competitive pricing based on per square foot. No hidden charges, complete transparency.
           </p>
-          <div className="mt-6 inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-white">
+          {/* <div className="mt-2mb-10 inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-white">
             <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             All prices are per sq. ft
-          </div>
+          </div> */}
         </div>
 
         {/* Packages Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mt-10">
           {packages.map((pkg, index) => (
             <div
               key={index}
@@ -106,11 +107,11 @@ const PackagesPricing = () => {
               style={{ animationDelay: `${index * 200}ms` }}
             >
               {/* Popular Badge */}
-              {pkg.popular && (
+              {/* {pkg.popular && (
                 <div className="absolute top-0 right-0 bg-gradient-to-r from-yellow-400 to-yellow-500 text-primary-900 px-6 py-2 rounded-bl-2xl font-bold text-sm shadow-lg">
                   ⭐ MOST POPULAR
                 </div>
-              )}
+              )} */}
 
               {/* Package Image */}
               <div className="relative h-48 overflow-hidden">

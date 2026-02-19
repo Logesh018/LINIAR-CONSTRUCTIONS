@@ -19,16 +19,16 @@
 
 @layer components {
 	.gradient-blue {
-		background: linear-gradient(135deg, #01489f 0%, #0052b3 50%, #1a80ff 100%);
+		background: linear-gradient(135deg, #01489f 0%, #0052b3 50%, #0a64d1 100%);
 	}
 
 	.gradient-blue-light {
 		/* background: linear-gradient(135deg, #0a448b 0%, #01489f 50%, #11519f 100%); */
-    background: linear-gradient(135deg, #0066e6 0%, #1a80ff 50%, #4d9cff 100%);
+    background: linear-gradient(135deg, #0066e6 0%, #0a64d1 50%, #4d9cff 100%);
 	}
 
 	.text-gradient {
-		background: linear-gradient(135deg, #0052b3 0%, #1a80ff 100%);
+		background: linear-gradient(135deg, #0052b3 0%, #0a64d5 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;

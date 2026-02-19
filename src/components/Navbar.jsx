@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // 1. Added state for mobile menu
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +33,8 @@ const Navbar = () => {
         behavior: 'smooth'
       });
     }
+    // 2. Close mobile menu when a link is clicked
+    setIsOpen(false);
   };
 
   return (
@@ -74,7 +77,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button (Desktop) */}
           <div className="hidden lg:block">
             <button 
               onClick={() => scrollToSection('contact-us')}
@@ -89,11 +92,60 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="lg:hidden">
-            <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+          {/* 3. Added onClick handler and conditional icon */}
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="lg:hidden z-50 focus:outline-none"
+          >
+            {isOpen ? (
+              // "X" Close Icon
+              <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              // Hamburger Icon
+              <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
+        </div>
+
+        {/* 4. Mobile Menu Container */}
+        {/* Positioned absolute to slide down below the main bar */}
+        <div className={`lg:hidden absolute top-full left-0 w-full transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className={`container mx-auto px-4 py-4 shadow-lg ${
+            isScrolled ? 'bg-white' : 'bg-primary-700/95 backdrop-blur-sm'
+          }`}>
+            <div className="flex flex-col space-y-4">
+              {menuItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-left font-medium transition-all duration-300 ${
+                    isScrolled 
+                      ? 'text-gray-700 hover:text-primary-600' 
+                      : 'text-white hover:text-blue-200'
+                  } ${item.name === 'Home' ? 'font-semibold' : ''}`}
+                >
+                  {item.name}
+                </button>
+              ))}
+              {/* Mobile CTA */}
+              <button 
+                onClick={() => scrollToSection('contact-us')}
+                className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg ${
+                  isScrolled 
+                    ? 'gradient-blue text-white hover:shadow-xl' 
+                    : 'bg-white text-primary-700 hover:shadow-2xl'
+                }`}
+              >
+                Get Quote
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

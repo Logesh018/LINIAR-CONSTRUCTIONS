@@ -71,8 +71,8 @@ const AboutUs = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
             <div className="animate-fade-in-up">
               <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" 
+                <img
+                  src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80"
                   alt="Liniar Constructions Team"
                   className="rounded-3xl shadow-2xl"
                 />
@@ -89,14 +89,14 @@ const AboutUs = () => {
               </h3>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  <strong className="text-primary-700">LINIAR Constructions</strong>, established in 2019, 
-                  is a trusted building and civil construction company delivering quality and reliable structures. 
+                  <strong className="text-primary-700">LINIAR Constructions</strong>, established in 2019,
+                  is a trusted building and civil construction company delivering quality and reliable structures.
                   We have successfully completed <strong>10+ projects</strong> and earned the trust of{' '}
                   <strong>20+ satisfied customers</strong> across Tamil Nadu.
                 </p>
                 <p>
-                  From Vastu planning to key handover, we offer complete end-to-end construction solutions for 
-                  residential, commercial, and renovation projects. With a highly experienced and advanced team, 
+                  From Vastu planning to key handover, we offer complete end-to-end construction solutions for
+                  residential, commercial, and renovation projects. With a highly experienced and advanced team,
                   we ensure quality execution, timely delivery, and long-lasting results.
                 </p>
                 <p className="text-xl font-display font-bold text-primary-700 pt-4">
@@ -109,7 +109,7 @@ const AboutUs = () => {
           {/* Achievements Grid */}
           <div className="grid md:grid-cols-4 gap-6 mb-20">
             {achievements.map((achievement, index) => (
-              <div 
+              <div
                 key={index}
                 className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
@@ -131,7 +131,7 @@ const AboutUs = () => {
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {values.map((value, index) => (
-                <div 
+                <div
                   key={index}
                   className="text-center animate-fade-in-up"
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -156,8 +156,8 @@ const AboutUs = () => {
               <div className="text-5xl mb-4">🎯</div>
               <h4 className="text-2xl font-display font-bold mb-4">Our Mission</h4>
               <p className="leading-relaxed text-blue-50">
-                To deliver exceptional construction solutions that exceed client expectations through quality 
-                craftsmanship, innovative approaches, and unwavering commitment to customer satisfaction. We aim 
+                To deliver exceptional construction solutions that exceed client expectations through quality
+                craftsmanship, innovative approaches, and unwavering commitment to customer satisfaction. We aim
                 to make the construction journey stress-free and transparent for every client.
               </p>
             </div>
@@ -166,8 +166,8 @@ const AboutUs = () => {
               <div className="text-5xl mb-4">🌟</div>
               <h4 className="text-2xl font-display font-bold mb-4 text-primary-700">Our Vision</h4>
               <p className="leading-relaxed text-gray-700">
-                To become the most trusted and preferred construction company in Tamil Nadu, known for our 
-                reliability, quality, and customer-centric approach. We envision setting new benchmarks in 
+                To become the most trusted and preferred construction company in Tamil Nadu, known for our
+                reliability, quality, and customer-centric approach. We envision setting new benchmarks in
                 construction excellence and building lasting relationships with our clients.
               </p>
             </div>

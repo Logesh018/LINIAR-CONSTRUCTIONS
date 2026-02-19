@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * Contact Form API Endpoint
  * Handles form submissions and sends emails
  */
