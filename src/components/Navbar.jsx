@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import logo from "../../assets/LC-logo.jpeg";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,17 +46,17 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 gradient-blue rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-white font-display text-2xl font-bold">L</span>
+            <div className="w-12 h-12 bg-transparent rounded-lg flex items-center justify-center shadow-lg">
+              <span className="text-white font-display text-2xl font-bold"><img src={logo} alt="Liniar Constructions Logo" className='rounded-3xl'/></span>
             </div>
             <div>
               <h1 className={`font-display text-2xl font-bold tracking-tight ${
-                isScrolled ? 'text-primary-700' : 'text-white'
+                isScrolled ? 'text-emerald-700' : 'text-white'
               }`}>
                 LINIAR CONSTRUCTIONS
               </h1>
               <p className={`text-xs ${isScrolled ? 'text-gray-600' : 'text-blue-100'}`}>
-                Building Your Trust
+                WE BUILD YOUR TRUST
               </p>
             </div>
           </div>
@@ -83,8 +84,8 @@ const Navbar = () => {
               onClick={() => scrollToSection('contact-us')}
               className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg ${
                 isScrolled 
-                  ? 'gradient-blue text-white hover:shadow-xl' 
-                  : 'bg-white text-primary-700 hover:shadow-2xl'
+                  ? 'bg-emerald-700 gradient-emerald text-white hover:shadow-xl' 
+                  : 'bg-white text-emerald-700 hover:shadow-2xl'
               }`}
             >
               Get Quote
@@ -139,7 +140,7 @@ const Navbar = () => {
                 className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg ${
                   isScrolled 
                     ? 'gradient-blue text-white hover:shadow-xl' 
-                    : 'bg-white text-primary-700 hover:shadow-2xl'
+                    : 'bg-white text-emerald-700 hover:shadow-2xl'
                 }`}
               >
                 Get Quote

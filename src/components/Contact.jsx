@@ -122,7 +122,7 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <span className="text-primary-600 font-bold text-sm tracking-wider uppercase mb-2 block">
+          <span className="text-emerald-700 font-bold text-sm tracking-wider uppercase mb-2 block">
             Get In Touch
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-black text-gray-900 mb-4">
@@ -209,7 +209,7 @@ const Contact = () => {
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <a 
                     href="tel:8754767261"
-                    className="bg-white text-primary-700 py-3 px-4 rounded-lg font-bold text-center hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+                    className="bg-white text-emerald-700 py-3 px-4 rounded-lg font-bold text-center hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
                   >
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -288,7 +288,7 @@ const Contact = () => {
                       onChange={handleChange}
                       className={`w-full px-4 py-3 rounded-lg border-2 ${
                         errors.name ? 'border-red-500' : 'border-gray-200'
-                      } focus:border-primary-500 focus:outline-none transition-colors`}
+                      } focus:border-teal-500 focus:outline-none transition-colors`}
                       placeholder="Enter your full name"
                     />
                     {errors.name && (
@@ -309,7 +309,7 @@ const Contact = () => {
                       onChange={handleChange}
                       className={`w-full px-4 py-3 rounded-lg border-2 ${
                         errors.mobile ? 'border-red-500' : 'border-gray-200'
-                      } focus:border-primary-500 focus:outline-none transition-colors`}
+                      } focus:border-teal-500 focus:outline-none transition-colors`}
                       placeholder="10-digit mobile number"
                       maxLength="10"
                     />
@@ -331,7 +331,7 @@ const Contact = () => {
                       onChange={handleChange}
                       className={`w-full px-4 py-3 rounded-lg border-2 ${
                         errors.email ? 'border-red-500' : 'border-gray-200'
-                      } focus:border-primary-500 focus:outline-none transition-colors`}
+                      } focus:border-teal-500 focus:outline-none transition-colors`}
                       placeholder="your.email@example.com"
                     />
                     {errors.email && (
@@ -352,7 +352,7 @@ const Contact = () => {
                       rows="5"
                       className={`w-full px-4 py-3 rounded-lg border-2 ${
                         errors.description ? 'border-red-500' : 'border-gray-200'
-                      } focus:border-primary-500 focus:outline-none transition-colors resize-none`}
+                      } focus:border-teal-500 focus:outline-none transition-colors resize-none`}
                       placeholder="Tell us about your construction project, location, and requirements..."
                     />
                     {errors.description && (

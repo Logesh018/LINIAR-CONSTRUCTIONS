@@ -56,7 +56,7 @@ const AboutUs = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <span className="text-primary-600 font-bold text-sm tracking-wider uppercase mb-2 block">
+          <span className="text-emerald-700 font-bold text-sm tracking-wider uppercase mb-2 block">
             Know Us Better
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-black text-gray-900 mb-4">
@@ -76,7 +76,7 @@ const AboutUs = () => {
                   alt="Liniar Constructions Team"
                   className="rounded-3xl shadow-2xl"
                 />
-                <div className="absolute -bottom-6 -right-6 gradient-blue text-white p-6 rounded-2xl shadow-xl">
+                <div className="absolute -bottom-6 -right-6 gradient-emerald text-white p-6 rounded-2xl shadow-xl">
                   <div className="text-4xl font-display font-black">2019</div>
                   <div className="text-sm">Established</div>
                 </div>
@@ -89,17 +89,17 @@ const AboutUs = () => {
               </h3>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  <strong className="text-primary-700">LINIAR Constructions</strong>, established in 2019,
+                  <strong className="text-emerald-700">LINIAR Constructions</strong>, established in 2019,
                   is a trusted building and civil construction company delivering quality and reliable structures.
-                  We have successfully completed <strong>10+ projects</strong> and earned the trust of{' '}
-                  <strong>20+ satisfied customers</strong> across Tamil Nadu.
+                  We have successfully completed <strong className="text-emerald-700">10+ projects</strong> and earned the trust of{' '}
+                  <strong className="text-emerald-700">20+ satisfied customers</strong> across Tamil Nadu.
                 </p>
                 <p>
                   From Vastu planning to key handover, we offer complete end-to-end construction solutions for
                   residential, commercial, and renovation projects. With a highly experienced and advanced team,
                   we ensure quality execution, timely delivery, and long-lasting results.
                 </p>
-                <p className="text-xl font-display font-bold text-primary-700 pt-4">
+                <p className="text-xl font-display font-bold text-green-800 pt-4">
                   At LINIAR Constructions, we don't just build structures — we build your trust.
                 </p>
               </div>
@@ -115,7 +115,7 @@ const AboutUs = () => {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="text-5xl mb-4">{achievement.icon}</div>
-                <div className="text-4xl font-display font-black text-primary-600 mb-2">
+                <div className="text-4xl font-display font-black text-teal-700 mb-2">
                   {achievement.number}
                 </div>
                 <div className="font-bold text-gray-900 mb-2">{achievement.label}</div>
@@ -155,16 +155,17 @@ const AboutUs = () => {
             <div className="gradient-blue text-white p-10 rounded-3xl shadow-xl">
               <div className="text-5xl mb-4">🎯</div>
               <h4 className="text-2xl font-display font-bold mb-4">Our Mission</h4>
-              <p className="leading-relaxed text-blue-50">
+              <p className="leading-relaxed text-teal-50">
                 To deliver exceptional construction solutions that exceed client expectations through quality
                 craftsmanship, innovative approaches, and unwavering commitment to customer satisfaction. We aim
                 to make the construction journey stress-free and transparent for every client.
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-primary-50 to-blue-50 text-gray-900 p-10 rounded-3xl shadow-xl border border-primary-100">
+            {/* ✅ Vision card: replaced blue-50 with teal/primary equivalents */}
+            <div className="bg-gradient-to-br from-primary-50 to-teal-50 text-gray-900 p-10 rounded-3xl shadow-xl border border-primary-100">
               <div className="text-5xl mb-4">🌟</div>
-              <h4 className="text-2xl font-display font-bold mb-4 text-primary-700">Our Vision</h4>
+              <h4 className="text-2xl font-display font-bold mb-4 text-emerald-700">Our Vision</h4>
               <p className="leading-relaxed text-gray-700">
                 To become the most trusted and preferred construction company in Tamil Nadu, known for our
                 reliability, quality, and customer-centric approach. We envision setting new benchmarks in

@@ -18,24 +18,38 @@
 }
 
 @layer components {
+	/* ✅ PRIMARY BRAND GRADIENT — matches Liniar logo teal-green */
 	.gradient-blue {
-		background: linear-gradient(135deg, #01489f 0%, #0052b3 50%, #0a64d1 100%);
+		background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
 	}
 
 	.gradient-blue-light {
-		/* background: linear-gradient(135deg, #0a448b 0%, #01489f 50%, #11519f 100%); */
-    background: linear-gradient(135deg, #0066e6 0%, #0a64d1 50%, #4d9cff 100%);
+		background: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
+	}
+
+	/* Emerald accent gradients (used in WhatWeBuild & Navbar) */
+	.gradient-emerald {
+		background: linear-gradient(135deg, #065f46 0%, #047857 50%, #059669 100%);
+	}
+
+	.gradient-emerald-light {
+		background: linear-gradient(135deg, #047857 0%, #059669 50%, #10b981 100%);
+	}
+
+	/* Legacy alias (used in Navbar logo area) */
+	.gradient-green {
+		background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
 	}
 
 	.text-gradient {
-		background: linear-gradient(135deg, #0052b3 0%, #0a64d5 100%);
+		background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
 	}
 
 	.btn-primary {
-		@apply bg-gradient-to-r from-primary-700 to-primary-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105;
+		@apply bg-gradient-to-r from-teal-700 to-teal-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105;
 	}
 
 	.card-hover {

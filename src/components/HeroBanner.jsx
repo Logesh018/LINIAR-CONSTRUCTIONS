@@ -20,14 +20,14 @@ const HeroBanner = () => {
       desktopImage: BannerDesktop2,
       mobileImage: BannerMobile2,
     },
-    {
-      title: "Share Site Location & Sq Ft",
-      subtitle: "Get an Instant Quote Today",
-      desktopImage:
-        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80",
-      mobileImage:
-        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
-    },
+    // {
+    //   title: "Share Site Location & Sq Ft",
+    //   subtitle: "Get an Instant Quote Today",
+    //   desktopImage:
+    //     "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80",
+    //   mobileImage:
+    //     "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
+    // },
   ];
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const HeroBanner = () => {
             />
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-900/90 via-primary-800/80 to-primary-700/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-teal-900/80 to-teal-800/70"></div>
           </div>
 
           {/* Content */}
@@ -92,11 +92,11 @@ const HeroBanner = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-4">
-                    <button className="bg-white text-primary-700 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
+                    <button className="bg-white text-emerald-700 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
                       Chat on Whatsapp
                     </button>
 
-                    <button className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg backdrop-blur-sm hover:bg-white hover:text-primary-700 transition-all duration-300 hover:scale-105">
+                    <button className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg backdrop-blur-sm hover:bg-white hover:text-teal-700 transition-all duration-300 hover:scale-105">
                       Call Us
                     </button>
                   </div>

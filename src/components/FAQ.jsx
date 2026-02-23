@@ -39,7 +39,7 @@ const FAQ = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <span className="text-primary-600 font-bold text-sm tracking-wider uppercase mb-2 block">
+          <span className="text-emerald-700 font-bold text-sm tracking-wider uppercase mb-2 block">
             Got Questions?
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-black text-gray-900 mb-4">
@@ -54,7 +54,7 @@ const FAQ = () => {
         {/* FAQ Accordion */}
         <div className="max-w-4xl mx-auto">
           {faqs.map((faq, index) => (
-            <div 
+            <div
               key={index}
               className="mb-4 animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
@@ -62,8 +62,8 @@ const FAQ = () => {
               <button
                 onClick={() => toggleFAQ(index)}
                 className={`w-full text-left p-6 rounded-2xl transition-all duration-300 ${
-                  openIndex === index 
-                    ? 'gradient-blue text-white shadow-xl' 
+                  openIndex === index
+                    ? 'gradient-blue text-white shadow-xl'
                     : 'bg-gray-50 hover:bg-gray-100 text-gray-900 shadow-lg hover:shadow-xl'
                 }`}
               >
@@ -73,29 +73,30 @@ const FAQ = () => {
                   }`}>
                     {faq.question}
                   </h3>
+
                   <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    openIndex === index 
-                      ? 'bg-white/20 rotate-180' 
-                      : 'bg-primary-100 text-primary-700'
+                    openIndex === index
+                      ? 'bg-white/20 rotate-180'
+                      : 'bg-emerald-100 text-primary-700'
                   }`}>
-                    <svg 
-                      className="w-5 h-5" 
-                      fill="none" 
-                      stroke="currentColor" 
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M19 9l-7 7-7-7" 
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
                       />
                     </svg>
                   </div>
                 </div>
 
                 {/* Answer */}
-                <div 
+                <div
                   className={`overflow-hidden transition-all duration-500 ${
                     openIndex === index ? 'max-h-96 mt-4' : 'max-h-0'
                   }`}
@@ -104,7 +105,7 @@ const FAQ = () => {
                     openIndex === index ? 'border-white/20' : 'border-gray-200'
                   }`}>
                     <p className={`leading-relaxed ${
-                      openIndex === index ? 'text-blue-50' : 'text-gray-700'
+                      openIndex === index ? 'text-teal-50' : 'text-gray-700'
                     }`}>
                       {faq.answer}
                     </p>
@@ -116,7 +117,7 @@ const FAQ = () => {
         </div>
 
         {/* Still Have Questions CTA */}
-        <div className="mt-16 text-center bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-12 max-w-3xl mx-auto border border-primary-100">
+        <div className="mt-16 text-center bg-gradient-to-br from-gray-50 to-teal-50 rounded-3xl p-12 max-w-3xl mx-auto border border-primary-100">
           <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">
             Still have questions?
           </h3>
@@ -127,9 +128,9 @@ const FAQ = () => {
             <button className="gradient-blue text-white px-8 py-4 rounded-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
               Contact Us
             </button>
-            <a 
+            <a
               href="tel:8754767261"
-              className="border-2 border-primary-600 text-primary-700 px-8 py-4 rounded-lg font-bold hover:bg-primary-600 hover:text-white transition-all duration-300 hover:scale-105 inline-flex items-center"
+              className="border-2 border-teal-600 text-teal-700 px-8 py-4 rounded-lg font-bold hover:bg-teal-600 hover:text-white transition-all duration-300 hover:scale-105 inline-flex items-center"
             >
               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />

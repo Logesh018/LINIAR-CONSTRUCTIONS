@@ -31,13 +31,13 @@ const WhatWeBuild = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in-up">
           <div className="inline-block">
-            <span className="text-primary-600 font-bold text-sm tracking-wider uppercase mb-2 block">
+            <span className="text-emerald-600 font-bold text-sm tracking-wider uppercase mb-2 block">
               Our Expertise
             </span>
             <h2 className="text-4xl md:text-5xl font-display font-black text-gray-900 mb-4">
               What We Build
             </h2>
-            <div className="w-24 h-1 gradient-blue mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-emerald-800 gradient-emerald mx-auto rounded-full"></div>
           </div>
           <p className="text-gray-600 text-lg mt-6 max-w-2xl mx-auto">
             With decades of experience and skilled Tamil masons, we deliver construction excellence across all project types
@@ -78,7 +78,7 @@ const WhatWeBuild = () => {
                 <div className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center text-sm text-gray-700">
-                      <svg className="w-5 h-5 text-primary-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       {feature}
@@ -86,7 +86,7 @@ const WhatWeBuild = () => {
                   ))}
                 </div>
 
-                <button className="w-full gradient-blue-light text-white py-3 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <button className="w-full bg-teal-700 gradient-teal-light text-white py-3 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105">
                   Learn More
                 </button>
               </div>
