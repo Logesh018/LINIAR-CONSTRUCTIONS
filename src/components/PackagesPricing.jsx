@@ -1,211 +1,329 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const PackagesPricing = () => {
-  const packages = [
-    {
-      name: "Basic Package",
-      price: "1,499",
-      icon: "🏗️",
-      color: "from-blue-700 to-blue-800",
-      description: "Perfect for budget-conscious homeowners seeking quality construction",
-      image:
-        "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YnVpbGRpbmclMjBjb25zdHJ1Y3Rpb258ZW58MHx8MHx8fDA%3D",
-      features: [
-        "Standard quality materials",
-        "Basic finishing work",
-        "Standard flooring & tiling",
-        "Basic electrical & plumbing",
-        "Distemper paint finish",
-        "1 year warranty",
-        "Weekly progress updates",
-        "Basic construction monitoring"
-      ],
-      popular: false
-    },
-    {
-      name: "Standard Package",
-      price: "2,999",
-      icon: "🏘️",
-      color: "from-primary-600 to-primary-700",
-      description: "The most popular choice for modern homes with premium finishes",
-      image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80",
-      features: [
-        "Premium quality materials",
-        "High-quality finishing work",
-        "Vitrified tiles & premium flooring",
-        "Concealed electrical wiring",
-        "Emulsion paint finish",
-        "Modular kitchen basics",
-        "2 year warranty",
-        "24×7 CCTV monitoring",
-        "Daily progress updates",
-        "3D visualization included"
-      ],
-      popular: true
-    },
-    {
-      name: "Premium Package",
-      price: "4,999",
-      icon: "🏛️",
-      color: "from-yellow-500 to-yellow-600",
-      description: "Luxury construction with imported materials and designer finishes",
-      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
-      features: [
-        "Imported premium materials",
-        "Designer finishing work",
-        "Italian marble & wooden flooring",
-        "Smart home automation ready",
-        "Premium texture paint finish",
-        "Fully modular kitchen & wardrobes",
-        "Premium sanitary & CP fittings",
-        "3 year warranty",
-        "24×7 CCTV + AI monitoring",
-        "Real-time app tracking",
-        "Dedicated project manager",
-        "Architectural consultation included"
-      ],
-      popular: false
-    }
-  ];
+// Data constants (unchanged)
+const residentialPackages = [
+  {
+    name: "Basic", price: "2,199", icon: "🏠", headerBg: "linear-gradient(160deg, #1e40af 0%, #2563eb 100%)", btnBg: "linear-gradient(135deg, #1e40af, #3b82f6)",
+    features: [
+      { text: "CCTV Cameras", star: true }, { text: "Standard quality materials" }, { text: "Basic finishing work" }, { text: "Standard flooring & tiling" }, { text: "Basic electrical & plumbing" }, { text: "Distemper paint finish" },
+    ],
+  },
+  {
+    name: "Standard", price: "2,499", icon: "🏡", headerBg: "linear-gradient(160deg, #1e3a8a 0%, #1d4ed8 100%)", btnBg: "linear-gradient(135deg, #1e3a8a, #2563eb)",
+    features: [
+      { text: "CCTV Cameras", star: true }, { text: "Sump with waterproofing — 6,000 L", star: true }, { text: "Septic tank with waterproofing — 8,000 L", star: true }, { text: "Premium quality materials" }, { text: "Vitrified tiles & flooring" }, { text: "Concealed electrical wiring" }, { text: "Emulsion paint finish" },
+    ],
+  },
+  {
+    name: "Standard+", price: "2,699", icon: "🏘️", headerBg: "linear-gradient(160deg, #1e3a8a 0%, #1d4ed8 100%)", btnBg: "linear-gradient(135deg, #1e3a8a, #2563eb)",
+    features: [
+      { text: "CCTV Cameras", star: true }, { text: "Sump with waterproofing — 8,000 L", star: true }, { text: "Septic tank with waterproofing — 10,000 L", star: true }, { text: "Full Color Painting", star: true }, { text: "Premium quality materials" }, { text: "Superior finishing work" }, { text: "Vitrified tiles & premium flooring" },
+    ],
+  },
+  {
+    name: "Premium", price: "3,199", icon: "🏗️", headerBg: "linear-gradient(160deg, #0f172a 0%, #1e3a8a 100%)", btnBg: "linear-gradient(135deg, #0f172a, #1e3a8a)",
+    features: [
+      { text: "CCTV Cameras", star: true }, { text: "Sump with waterproofing — 10,000 L", star: true }, { text: "Septic tank with waterproofing — 12,000 L", star: true }, { text: "Full Color Painting", star: true }, { text: "Compound Wall Included", star: true }, { text: "Premium materials throughout" }, { text: "Designer finishing" },
+    ],
+  },
+  {
+    name: "Luxury", price: "4,499", icon: "🏛️", headerBg: "linear-gradient(160deg, #78350f 0%, #b45309 50%, #d97706 100%)", btnBg: "linear-gradient(135deg, #92400e, #d97706)", isLuxury: true,
+    features: [
+      { text: "Italian marble & exotic wood flooring" }, { text: "Fully modular kitchen & wardrobes" }, { text: "Smart home automation ready" }, { text: "Premium texture & designer paint" }, { text: "Branded sanitary & CP fittings" }, { text: "Dedicated project manager" }, { text: "Architectural consultation" },
+    ],
+  },
+];
+
+const commercialPackages = [
+  {
+    name: "Basic", price: "1,699", icon: "🏢", headerBg: "linear-gradient(160deg, #0f172a 0%, #1e293b 100%) ", btnBg: "linear-gradient(135deg, #134e4a, #0d9488)", accentColor: "#5eead4",
+    features: [
+      { text: "Standard commercial materials" }, { text: "Basic interior finishing" }, { text: "Standard flooring & tiling" }, { text: "Industrial electrical & plumbing" }, { text: "Basic CCTV provision" }, { text: "Weekly site updates" },
+    ],
+  },
+  {
+    name: "Standard", price: "1,899", icon: "🏬", headerBg: "linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #0f766e 100%)", btnBg: "linear-gradient(135deg, #0f172a, #0f766e)", accentColor: "#2dd4bf",
+    features: [
+      { text: "Premium commercial materials" }, { text: "High-quality finishing" }, { text: "Vitrified & anti-skid flooring" }, { text: "Concealed electrical wiring" }, { text: "Emulsion paint finish" }, { text: "CCTV monitoring" }, { text: "Daily progress updates" },
+    ],
+  },
+  {
+    name: "Standard+", price: "2,199", icon: "🏙️", headerBg: "linear-gradient(160deg, #134e4a 0%, #0f766e 100%)", btnBg: "linear-gradient(135deg, #0f172a, #1e293b)", accentColor: "#38bdf8",
+    features: [
+      { text: "Imported commercial materials" }, { text: "Designer interior finishing" }, { text: "Premium flooring solutions" }, { text: "Smart electrical layout" }, { text: "Full color painting" }, { text: "Advanced CCTV & access control" }, { text: "Real-time app tracking" },
+    ],
+  },
+];
+
+export default function PackagesPricing() {
+  const [activeTab, setActiveTab] = useState('residential');
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  
+  // We use a derived state for packages to allow the "exit" animation to finish
+  // before actually swapping the data.
+  const [displayPackages, setDisplayPackages] = useState(residentialPackages);
+
+  // Handle the tab switch logic with transition delays
+  const handleTabSwitch = (tab) => {
+    if (tab === activeTab) return;
+    
+    // 1. Start exit animation
+    setIsTransitioning(true);
+    
+    // 2. Wait for exit animation, then switch content and start entrance animation
+    setTimeout(() => {
+      const newPackages = tab === 'residential' ? residentialPackages : commercialPackages;
+      setDisplayPackages(newPackages);
+      setActiveTab(tab);
+      
+      // 3. Remove transition state to trigger entrance animation
+      // Using requestAnimationFrame ensures the browser processes the DOM change first
+      requestAnimationFrame(() => {
+        setIsTransitioning(false);
+      });
+    }, 300); // 300ms matches the CSS transition duration
+  };
 
   return (
-    <section id="packages-pricing" className="py-10 gradient-blue relative overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+    <section
+      id="packages-pricing"
+      className="relative overflow-hidden"
+      style={{ padding: '52px 0 48px', background: 'linear-gradient(180deg, #f8faff 0%, #ffffff 100%)' }}
+    >
+      {/* bg glows */}
+      <div style={{ position:'absolute',top:'-80px',right:'-80px',width:'400px',height:'400px',background:'rgba(37,99,235,0.06)',borderRadius:'50%',filter:'blur(80px)',pointerEvents:'none' }} />
+      <div style={{ position:'absolute',bottom:'-80px',left:'-80px',width:'340px',height:'340px',background:'rgba(37,99,235,0.04)',borderRadius:'50%',filter:'blur(70px)',pointerEvents:'none' }} />
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-15 animate-fade-in-up">
-          <div className="inline-block">
-            {/* <span className="text-blue-200 font-bold text-sm tracking-wider uppercase mb-2 block">
-              Transparent Pricing
-            </span> */}
-            <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-4">
-              Packages & Pricing
-            </h2>
-            <div className="w-24 h-1 bg-white mx-auto rounded-full"></div>
+      <div className="container mx-auto px-4 relative z-10" style={{ maxWidth: 1380 }}>
+
+        {/* Header */}
+        <div className="text-center" style={{ marginBottom: 22 }}>
+          <span className="text-primary-600 font-bold text-sm tracking-wider uppercase mb-2 block">
+            Transparent Pricing
+          </span>
+          <h2
+            className="font-display font-black"
+            style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.4rem)', marginBottom: 4, letterSpacing: '-0.02em', color: '#111827' }}
+          >
+            Packages &amp; Pricing
+          </h2>
+          <div className="w-24 h-1 gradient-blue mx-auto rounded-full" style={{ marginBottom: 16 }}></div>
+
+          {/* Toggle switch */}
+          <div
+            style={{
+              display: 'inline-flex',
+              background: '#f1f5f9',
+              border: '1px solid #e2e8f0',
+              borderRadius: 60,
+              padding: '5px 6px',
+              gap: 4,
+            }}
+          >
+            {['residential', 'commercial'].map(tab => (
+              <button
+                key={tab}
+                onClick={() => handleTabSwitch(tab)}
+                style={{
+                  padding: '9px 28px',
+                  borderRadius: 60,
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontWeight: 700,
+                  fontSize: 'clamp(0.8rem, 1.3vw, 0.9rem)',
+                  letterSpacing: '0.02em',
+                  transition: 'all 0.3s ease', // Smooth transition for button style
+                  background: activeTab === tab ? 'linear-gradient(135deg, #1e40af, #2563eb)' : 'transparent',
+                  color: activeTab === tab ? '#ffffff' : '#64748b',
+                  boxShadow: activeTab === tab ? '0 2px 16px rgba(30,64,175,0.3)' : 'none',
+                }}
+              >
+                {tab === 'residential' ? '🏠  Residential' : '🏢  Commercial'}
+              </button>
+            ))}
           </div>
-          <p className="text-blue-100 text-lg mt-6 max-w-2xl mx-auto">
-            Clear, competitive pricing based on per square foot. No hidden charges, complete transparency.
-          </p>
-          {/* <div className="mt-2mb-10 inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-white">
-            <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            All prices are per sq. ft
-          </div> */}
         </div>
 
-        {/* Packages Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mt-10">
-          {packages.map((pkg, index) => (
-            <div
-              key={index}
-              className={`relative bg-white rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105 animate-fade-in-up ${pkg.popular ? 'ring-2 ring-yellow-400 md:-mt-8 md:mb-8' : ''
-                }`}
-              style={{ animationDelay: `${index * 200}ms` }}
-            >
-              {/* Popular Badge */}
-              {/* {pkg.popular && (
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-yellow-400 to-yellow-500 text-primary-900 px-6 py-2 rounded-bl-2xl font-bold text-sm shadow-lg">
-                  ⭐ MOST POPULAR
-                </div>
-              )} */}
-
-              {/* Package Image */}
-              <div className="relative h-48 overflow-hidden">
+        {/* Cards Container */}
+        <div
+          className="pkg-grid-wrapper"
+          style={{
+            opacity: isTransitioning ? 0 : 1,
+            transform: isTransitioning ? 'translateY(15px)' : 'translateY(0)',
+            transition: 'opacity 0.3s ease, transform 0.3s ease',
+            maxWidth: activeTab === 'commercial' ? 820 : '100%',
+            margin: '0 auto',
+          }}
+        >
+          <div
+            className="pkg-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: `repeat(${displayPackages.length}, 1fr)`,
+              gap: 12,
+            }}
+          >
+            {displayPackages.map((pkg, idx) => (
+              <div
+                key={`${activeTab}-${idx}`} // Key changes force re-render for animation
+                className="pkg-card" // We use CSS for the entrance animation (see style tag below)
+                style={{
+                  background: '#ffffff',
+                  borderRadius: 20,
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  boxShadow: pkg.isLuxury
+                    ? '0 0 0 2.5px #d97706, 0 10px 36px rgba(0,0,0,0.22)'
+                    : '0 6px 30px rgba(0,0,0,0.15)',
+                  // CSS animation defined in <style> tag handles the opacity/transform entrance
+                  // But we add a dynamic delay for staggered effect
+                  animationDelay: `${idx * 80}ms`, 
+                }}
+              >
+                {/* ─ Card Header ─ */}
                 <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${pkg.image})` }}
+                  style={{
+                    background: pkg.headerBg,
+                    padding: '20px 16px 16px',
+                    textAlign: 'center',
+                  }}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${pkg.color} opacity-90`}></div>
-                </div>
-                <div className="relative h-full flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <span className="text-6xl mb-4 block">{pkg.icon}</span>
-                    <h3 className="text-3xl font-display font-black">{pkg.name}</h3>
+                  <div style={{ fontSize: 'clamp(1.8rem,3vw,2.4rem)', lineHeight: 1, marginBottom: 8 }}>
+                    {pkg.icon}
                   </div>
+                  <div
+                    className="font-display font-black text-white"
+                    style={{ fontSize: 'clamp(0.95rem,1.6vw,1.15rem)', letterSpacing: '0.01em', marginBottom: 10 }}
+                  >
+                    {pkg.name}
+                  </div>
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'baseline',
+                      gap: 3,
+                      background: 'rgba(255,255,255,0.15)',
+                      padding: '5px 16px',
+                      borderRadius: 40,
+                    }}
+                  >
+                    <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: 'clamp(0.72rem,1vw,0.82rem)', fontWeight: 600 }}>₹</span>
+                    <span
+                      className="font-display font-black text-white"
+                      style={{ fontSize: 'clamp(1.2rem,2.1vw,1.55rem)', lineHeight: 1 }}
+                    >
+                      {pkg.price}
+                    </span>
+                    <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: 'clamp(0.62rem,0.9vw,0.72rem)', fontWeight: 500 }}>/sq.ft</span>
+                  </div>
+                </div>
+
+                {/* ─ Features ─ */}
+                <div style={{ padding: '16px 18px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <ul style={{ listStyle: 'none', margin: 0, padding: 0, flex: 1, display: 'flex', flexDirection: 'column', gap: 9 }}>
+                    {pkg.features.map((f, i) => (
+                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 9 }}>
+                        {f.star ? (
+                          <span style={{ color: '#f59e0b', fontSize: '0.82rem', flexShrink: 0, marginTop: 1, lineHeight: 1 }}>★</span>
+                        ) : (
+                          <span style={{ color: pkg.isLuxury ? '#d97706' : (pkg.accentColor || '#93c5fd'), fontSize: '0.72rem', flexShrink: 0, marginTop: 2, lineHeight: 1 }}>✦</span>
+                        )}
+                        <span
+                          style={{
+                            fontSize: 'clamp(0.73rem,1.05vw,0.82rem)',
+                            lineHeight: 1.45,
+                            fontWeight: f.star ? 700 : 400,
+                            color: f.star ? '#111827' : '#4b5563',
+                          }}
+                        >
+                          {f.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
 
-              {/* Package Content */}
-              <div className="p-8">
-                {/* Price */}
-                <div className="text-center mb-6">
-                  <div className="flex items-baseline justify-center mb-2">
-                    <span className="text-gray-600 text-lg mr-1">₹</span>
-                    <span className="text-3xl font-display font-black text-gray-900">{pkg.price}</span>
-                    <span className="text-gray-600 ml-2">/sq.ft</span>
-                  </div>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {pkg.description}
-                  </p>
-                </div>
-
-                {/* Features */}
-                <div className="space-y-3 mb-8">
-                  {pkg.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start">
-                      <svg className="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-gray-700 text-sm">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA Button */}
-                <button className={`w-full bg-gradient-to-r ${pkg.color} text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105`}>
-                  Choose {pkg.name}
-                </button>
+        {/* Stats */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            maxWidth: 600,
+            margin: '28px auto 0',
+            gap: 8,
+            background: 'linear-gradient(135deg, #1e40af, #2563eb)',
+            borderRadius: 16,
+            padding: '18px 24px',
+          }}
+        >
+          {[['500+','Projects Done'],['15+','Years Experience'],['98%','Satisfaction'],['100%','On-Time']].map(([n, l]) => (
+            <div key={l} style={{ textAlign: 'center' }}>
+              <div
+                className="font-display font-black text-white"
+                style={{ fontSize: 'clamp(1.05rem,2.4vw,1.5rem)', lineHeight: 1 }}
+              >
+                {n}
+              </div>
+              <div style={{ color: 'rgba(191,219,254,0.9)', fontSize: 'clamp(0.6rem,0.9vw,0.7rem)', marginTop: 3 }}>
+                {l}
               </div>
             </div>
           ))}
         </div>
-
-        {/* Bottom Info */}
-        <div className="mt-16 text-center">
-          {/* <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-display font-bold text-white mb-4">
-              Need a Custom Package?
-            </h3>
-            <p className="text-blue-100 mb-6">
-              Every project is unique. Tell us your requirements and budget, and we'll create a custom package tailored just for you.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="bg-white text-primary-700 px-8 py-4 rounded-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                Get Custom Quote
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold backdrop-blur-sm hover:bg-white hover:text-primary-700 transition-all duration-300 hover:scale-105">
-                Download Brochure
-              </button>
-            </div>
-          </div> */}
-
-          {/* Trust Indicators */}
-          <div className="grid md:grid-cols-4 gap-8 mt-12 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="text-4xl font-display font-black text-white mb-2">500+</div>
-              <div className="text-blue-200 text-sm">Projects Completed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-display font-black text-white mb-2">15+</div>
-              <div className="text-blue-200 text-sm">Years Experience</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-display font-black text-white mb-2">98%</div>
-              <div className="text-blue-200 text-sm">Customer Satisfaction</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-display font-black text-white mb-2">100%</div>
-              <div className="text-blue-200 text-sm">On-Time Delivery</div>
-            </div>
-          </div>
-        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .pkg-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+        }
+        @media (min-width: 768px) and (max-width: 1099px) {
+          .pkg-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
+        @media (min-width: 1100px) {
+          .pkg-card {
+            transition: transform 0.24s ease, box-shadow 0.24s ease;
+          }
+          .pkg-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 44px rgba(0,0,0,0.24) !important;
+          }
+        }
+
+        /* --- Smooth Transition Animations --- */
+        
+        /* 1. Entrance Animation for Cards */
+        .pkg-card {
+          /* Start state is handled by animation, but ensure opacity 0 before it runs if loading */
+          opacity: 0; 
+          animation: slideInUp 0.5s ease forwards;
+        }
+
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* 2. Wrapper transition (handled inline mostly, but added here for clarity) */
+        .pkg-grid-wrapper {
+          transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+      `}</style>
     </section>
   );
-};
-
-export default PackagesPricing;
+}
