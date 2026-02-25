@@ -45,11 +45,12 @@ const WhatWeBuild = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 px-4 sm:px-0">
           {services.map((service, index) => (
             <div
               key={index}
-              className="max-w-sm mx-auto md:max-w-none w-full bg-white rounded-2xl overflow-hidden shadow-lg card-hover animate-fade-in-up"
+              /* Changed: max-w-sm to max-w-[340px] and w-full to w-[92%] mx-auto */
+              className="max-w-[340px] mx-auto md:max-w-none w-[92%] sm:w-full bg-white rounded-2xl overflow-hidden shadow-lg card-hover animate-fade-in-up flex flex-col"
               style={{ animationDelay: `${index * 200}ms` }}
             >
               {/* Image */}

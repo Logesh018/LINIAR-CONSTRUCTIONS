@@ -3,7 +3,7 @@ import logo from "../../assets/LC-logo.jpeg";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,16 +44,17 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-transparent rounded-lg flex items-center justify-center shadow-lg">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-transparent rounded-lg flex items-center justify-center shadow-lg">
               <span className="text-white font-display text-2xl font-bold"><img src={logo} alt="Liniar Constructions Logo" className='rounded-3xl' /></span>
             </div>
             <div>
+              {/* Changed: Reduced mobile text size to text-base to prevent clipping */}
               <h1 className={`font-display font-bold tracking-tight ${isScrolled ? 'text-emerald-700' : 'text-white'
-                } text-lg sm:text-xl lg:text-2xl`}> {/* <-- Changed text sizes here */}
+                } text-base sm:text-xl lg:text-2xl whitespace-nowrap`}>
                 LINIAR CONSTRUCTIONS
               </h1>
-              <p className={`text-[10px] sm:text-xs ${isScrolled ? 'text-gray-600' : 'text-blue-100'}`}>
+              <p className={`text-[9px] sm:text-xs tracking-wider ${isScrolled ? 'text-gray-600' : 'text-blue-100'}`}>
                 WE BUILD YOUR TRUST
               </p>
             </div>
@@ -66,8 +67,8 @@ const Navbar = () => {
                 key={index}
                 onClick={() => scrollToSection(item.id)}
                 className={`font-medium transition-all duration-300 hover:scale-105 ${isScrolled
-                    ? 'text-gray-700 hover:text-primary-600'
-                    : 'text-white hover:text-blue-200'
+                  ? 'text-gray-700 hover:text-primary-600'
+                  : 'text-white hover:text-blue-200'
                   } ${item.name === 'Home' ? 'font-semibold' : ''}`}
               >
                 {item.name}
@@ -80,8 +81,8 @@ const Navbar = () => {
             <button
               onClick={() => scrollToSection('contact-us')}
               className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg ${isScrolled
-                  ? 'bg-emerald-700 gradient-emerald text-white hover:shadow-xl'
-                  : 'bg-white text-emerald-700 hover:shadow-2xl'
+                ? 'bg-emerald-700 gradient-emerald text-white hover:shadow-xl'
+                : 'bg-white text-emerald-700 hover:shadow-2xl'
                 }`}
             >
               Get Quote
@@ -116,8 +117,8 @@ const Navbar = () => {
                   key={index}
                   onClick={() => scrollToSection(item.id)}
                   className={`text-left font-medium transition-all duration-300 ${isScrolled
-                      ? 'text-gray-700 hover:text-primary-600'
-                      : 'text-white hover:text-blue-200'
+                    ? 'text-gray-700 hover:text-primary-600'
+                    : 'text-white hover:text-blue-200'
                     } ${item.name === 'Home' ? 'font-semibold' : ''}`}
                 >
                   {item.name}
@@ -127,8 +128,8 @@ const Navbar = () => {
               <button
                 onClick={() => scrollToSection('contact-us')}
                 className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg ${isScrolled
-                    ? 'gradient-blue text-white hover:shadow-xl'
-                    : 'bg-white text-emerald-700 hover:shadow-2xl'
+                  ? 'gradient-blue text-white hover:shadow-xl'
+                  : 'bg-white text-emerald-700 hover:shadow-2xl'
                   }`}
               >
                 Get Quote

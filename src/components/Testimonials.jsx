@@ -98,7 +98,7 @@ const Testimonials = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-full md:w-[500px] snap-center"
+                className="flex-shrink-0 w-[85vw] max-w-[340px] md:max-w-[500px] snap-center px-2"
               >
                 <div className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 h-full flex flex-col">
                   {/* Stars */}
@@ -150,11 +150,10 @@ const Testimonials = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  index === currentIndex
+                className={`transition-all duration-300 rounded-full ${index === currentIndex
                     ? 'w-12 h-3 gradient-blue'
                     : 'w-3 h-3 bg-gray-300 hover:bg-teal-400'
-                }`}
+                  }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}

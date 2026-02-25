@@ -61,24 +61,21 @@ const FAQ = () => {
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className={`w-full text-left p-6 rounded-2xl transition-all duration-300 ${
-                  openIndex === index
+                className={`w-full text-left p-6 rounded-2xl transition-all duration-300 ${openIndex === index
                     ? 'gradient-blue text-white shadow-xl'
                     : 'bg-gray-50 hover:bg-gray-100 text-gray-900 shadow-lg hover:shadow-xl'
-                }`}
+                  }`}
               >
                 <div className="flex items-center justify-between">
-                  <h3 className={`font-display font-bold text-lg pr-8 ${
-                    openIndex === index ? 'text-white' : 'text-gray-900'
-                  }`}>
+                  <h3 className={`font-display font-bold text-lg pr-8 ${openIndex === index ? 'text-white' : 'text-gray-900'
+                    }`}>
                     {faq.question}
                   </h3>
 
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    openIndex === index
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${openIndex === index
                       ? 'bg-white/20 rotate-180'
                       : 'bg-emerald-100 text-primary-700'
-                  }`}>
+                    }`}>
                     <svg
                       className="w-5 h-5"
                       fill="none"
@@ -97,16 +94,13 @@ const FAQ = () => {
 
                 {/* Answer */}
                 <div
-                  className={`overflow-hidden transition-all duration-500 ${
-                    openIndex === index ? 'max-h-96 mt-4' : 'max-h-0'
-                  }`}
+                  className={`overflow-hidden transition-all duration-500 ${openIndex === index ? 'max-h-96 mt-4' : 'max-h-0'
+                    }`}
                 >
-                  <div className={`pt-4 border-t ${
-                    openIndex === index ? 'border-white/20' : 'border-gray-200'
-                  }`}>
-                    <p className={`leading-relaxed ${
-                      openIndex === index ? 'text-teal-50' : 'text-gray-700'
+                  <div className={`pt-4 border-t ${openIndex === index ? 'border-white/20' : 'border-gray-200'
                     }`}>
+                    <p className={`leading-relaxed ${openIndex === index ? 'text-teal-50' : 'text-gray-700'
+                      }`}>
                       {faq.answer}
                     </p>
                   </div>

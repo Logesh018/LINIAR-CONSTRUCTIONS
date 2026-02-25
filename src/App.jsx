@@ -13,7 +13,7 @@ import Gallery from './components/Gallery';
 
 function App() {
   return (
-    <div className="min-h-screen overflow-hidden flex flex-col">
+    <div className="min-h-screen overflow-x-hidden w-full relative flex flex-col">
       <Navbar />
       <HeroBanner />
       <WhatWeBuild />
