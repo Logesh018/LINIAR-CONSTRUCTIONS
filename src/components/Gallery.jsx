@@ -49,7 +49,7 @@ export default function Gallery() {
     makeItem(0, 0),
     makeItem(1, 1),
     makeItem(2, 2),
-    makeItem(3, 3), // pre-buffered
+    makeItem(3, 3),
   ]);
   const nextImgRef = useRef(4);
   const [paused, setPaused] = useState(false);
@@ -110,9 +110,7 @@ export default function Gallery() {
               const img = images[item.imgIdx];
               const tc = tagColors[img.tag];
               const isVisible = item.slot >= 0 && item.slot < VISIBLE_COUNT;
-              // Each card width = 1/3 of track, with small gaps via padding
-              const slotWidth = 100 / VISIBLE_COUNT; // 33.333%
-
+              const slotWidth = 100 / VISIBLE_COUNT;
               return (
                 <div
                   key={item.uid}
