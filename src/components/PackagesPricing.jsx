@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-// ✅ Color palette updated to match Liniar logo teal-green
-// Teal-900: #134e4a | Teal-800: #115e59 | Teal-700: #0f766e | Teal-600: #0d9488 | Teal-500: #14b8a6
-
 const residentialPackages = [
   {
     name: "Basic", price: "2,199", icon: "🏠",
     headerBg: "linear-gradient(160deg, #0f766e 0%, #0d9488 100%)",
-    btnBg:    "linear-gradient(135deg, #0f766e, #14b8a6)",
     features: [
       { text: "CCTV Cameras", star: true },
       { text: "Standard quality materials" },
@@ -20,7 +16,6 @@ const residentialPackages = [
   {
     name: "Standard", price: "2,499", icon: "🏡",
     headerBg: "linear-gradient(160deg, #115e59 0%, #0f766e 100%)",
-    btnBg:    "linear-gradient(135deg, #115e59, #0d9488)",
     features: [
       { text: "CCTV Cameras", star: true },
       { text: "Sump with waterproofing — 6,000 L", star: true },
@@ -34,7 +29,6 @@ const residentialPackages = [
   {
     name: "Standard+", price: "2,699", icon: "🏘️",
     headerBg: "linear-gradient(160deg, #115e59 0%, #0d9488 100%)",
-    btnBg:    "linear-gradient(135deg, #115e59, #14b8a6)",
     features: [
       { text: "CCTV Cameras", star: true },
       { text: "Sump with waterproofing — 8,000 L", star: true },
@@ -48,7 +42,6 @@ const residentialPackages = [
   {
     name: "Premium", price: "3,199", icon: "🏗️",
     headerBg: "linear-gradient(160deg, #0a2e2a 0%, #115e59 100%)",
-    btnBg:    "linear-gradient(135deg, #0a2e2a, #0f766e)",
     features: [
       { text: "CCTV Cameras", star: true },
       { text: "Sump with waterproofing — 10,000 L", star: true },
@@ -61,9 +54,7 @@ const residentialPackages = [
   },
   {
     name: "Luxury", price: "4,499", icon: "🏛️",
-    // Luxury keeps its amber/gold — intentional premium signal
     headerBg: "linear-gradient(160deg, #78350f 0%, #b45309 50%, #d97706 100%)",
-    btnBg:    "linear-gradient(135deg, #92400e, #d97706)",
     isLuxury: true,
     features: [
       { text: "Italian marble & exotic wood flooring" },
@@ -80,8 +71,7 @@ const residentialPackages = [
 const commercialPackages = [
   {
     name: "Basic", price: "1,699", icon: "🏢",
-    headerBg:    "linear-gradient(160deg, #0a2e2a 0%, #115e59 100%)",
-    btnBg:       "linear-gradient(135deg, #0a2e2a, #0f766e)",
+    headerBg: "linear-gradient(160deg, #0a2e2a 0%, #115e59 100%)",
     accentColor: "#2dd4bf",
     features: [
       { text: "Standard commercial materials" },
@@ -94,8 +84,7 @@ const commercialPackages = [
   },
   {
     name: "Standard", price: "1,899", icon: "🏬",
-    headerBg:    "linear-gradient(160deg, #0a2e2a 0%, #115e59 60%, #0f766e 100%)",
-    btnBg:       "linear-gradient(135deg, #0a2e2a, #0f766e)",
+    headerBg: "linear-gradient(160deg, #0a2e2a 0%, #115e59 60%, #0f766e 100%)",
     accentColor: "#14b8a6",
     features: [
       { text: "Premium commercial materials" },
@@ -109,8 +98,7 @@ const commercialPackages = [
   },
   {
     name: "Standard+", price: "2,199", icon: "🏙️",
-    headerBg:    "linear-gradient(160deg, #0f766e 0%, #0d9488 100%)",
-    btnBg:       "linear-gradient(135deg, #0a2e2a, #115e59)",
+    headerBg: "linear-gradient(160deg, #0f766e 0%, #0d9488 100%)",
     accentColor: "#2dd4bf",
     features: [
       { text: "Imported commercial materials" },
@@ -128,17 +116,18 @@ export default function PackagesPricing() {
   const [activeTab, setActiveTab] = useState('residential');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [displayPackages, setDisplayPackages] = useState(residentialPackages);
+  // ✅ Badge hides only when Commercial tab is clicked — no timer, stays indefinitely
+  const [showBadge, setShowBadge] = useState(true);
 
   const handleTabSwitch = (tab) => {
     if (tab === activeTab) return;
+    if (tab === 'commercial') setShowBadge(false); // hide badge on click
     setIsTransitioning(true);
     setTimeout(() => {
       const newPackages = tab === 'residential' ? residentialPackages : commercialPackages;
       setDisplayPackages(newPackages);
       setActiveTab(tab);
-      requestAnimationFrame(() => {
-        setIsTransitioning(false);
-      });
+      requestAnimationFrame(() => setIsTransitioning(false));
     }, 300);
   };
 
@@ -148,9 +137,9 @@ export default function PackagesPricing() {
       className="relative overflow-hidden"
       style={{ padding: '52px 0 48px', background: 'linear-gradient(180deg, #f0fdfa 0%, #ffffff 100%)' }}
     >
-      {/* ✅ Glow blobs updated to teal */}
-      <div style={{ position:'absolute',top:'-80px',right:'-80px',width:'400px',height:'400px',background:'rgba(13,148,136,0.07)',borderRadius:'50%',filter:'blur(80px)',pointerEvents:'none' }} />
-      <div style={{ position:'absolute',bottom:'-80px',left:'-80px',width:'340px',height:'340px',background:'rgba(15,118,110,0.05)',borderRadius:'50%',filter:'blur(70px)',pointerEvents:'none' }} />
+      {/* Glow blobs */}
+      <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '400px', height: '400px', background: 'rgba(13,148,136,0.07)', borderRadius: '50%', filter: 'blur(80px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-80px', left: '-80px', width: '340px', height: '340px', background: 'rgba(15,118,110,0.05)', borderRadius: '50%', filter: 'blur(70px)', pointerEvents: 'none' }} />
 
       <div className="container mx-auto px-4 relative z-10" style={{ maxWidth: 1380 }}>
 
@@ -165,16 +154,9 @@ export default function PackagesPricing() {
           >
             Packages &amp; Pricing
           </h2>
-          {/* ✅ Underline bar — teal gradient */}
-          <div
-            style={{
-              width: 96, height: 4, margin: '0 auto 16px',
-              background: 'linear-gradient(135deg, #0f766e, #14b8a6)',
-              borderRadius: 9999,
-            }}
-          />
+          <div style={{ width: 96, height: 4, margin: '0 auto 16px', background: 'linear-gradient(135deg, #0f766e, #14b8a6)', borderRadius: 9999 }} />
 
-          {/* Toggle switch */}
+          {/* Toggle pill */}
           <div
             style={{
               display: 'inline-flex',
@@ -185,30 +167,60 @@ export default function PackagesPricing() {
               gap: 4,
             }}
           >
-            {['residential', 'commercial'].map(tab => (
-              <button
-                key={tab}
-                onClick={() => handleTabSwitch(tab)}
-                style={{
-                  padding: '9px 28px',
-                  borderRadius: 60,
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontWeight: 700,
-                  fontSize: 'clamp(0.8rem, 1.3vw, 0.9rem)',
-                  letterSpacing: '0.02em',
-                  transition: 'all 0.3s ease',
-                  // ✅ Active tab uses teal gradient
-                  background: activeTab === tab
-                    ? 'linear-gradient(135deg, #0f766e, #0d9488)'
-                    : 'transparent',
-                  color: activeTab === tab ? '#ffffff' : '#4b5563',
-                  boxShadow: activeTab === tab ? '0 2px 16px rgba(15,118,110,0.3)' : 'none',
-                }}
-              >
-                {tab === 'residential' ? '🏠  Residential' : '🏢  Commercial'}
-              </button>
-            ))}
+            {['residential', 'commercial'].map(tab => {
+              const isActive = activeTab === tab;
+              // ✅ Pulse always on whichever tab is currently inactive
+              const isHintTab = !isActive;
+
+              return (
+                <button
+                  key={tab}
+                  onClick={() => handleTabSwitch(tab)}
+                  // ✅ Pulse-glow only on the inactive Commercial tab while badge is visible
+                  className={isHintTab ? 'tab-hint-pulse' : ''}
+                  style={{
+                    padding: '9px 28px',
+                    borderRadius: 60,
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontWeight: 700,
+                    fontSize: 'clamp(0.8rem, 1.3vw, 0.9rem)',
+                    letterSpacing: '0.02em',
+                    transition: 'background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease',
+                    background: isActive ? 'linear-gradient(135deg, #0f766e, #0d9488)' : 'transparent',
+                    color: isActive ? '#ffffff' : '#0f766e',
+                    boxShadow: isActive ? '0 2px 16px rgba(15,118,110,0.3)' : 'none',
+                    position: 'relative',
+                  }}
+                >
+                  {tab === 'residential' ? '🏠  Residential' : '🏢  Commercial'}
+
+                  {/* ✅ TAP badge — top-right corner of Commercial tab only */}
+                  {tab === 'commercial' && (
+                    <span style={{
+                      position: 'absolute',
+                      top: -9,
+                      right: -2,
+                      background: 'linear-gradient(135deg, #0d9488, #14b8a6)',
+                      color: '#fff',
+                      fontSize: '0.52rem',
+                      fontWeight: 800,
+                      letterSpacing: '0.08em',
+                      padding: '2px 7px',
+                      borderRadius: 20,
+                      boxShadow: '0 2px 8px rgba(13,148,136,0.45)',
+                      // ✅ Smooth scale-in/out driven purely by showBadge state
+                      opacity: showBadge && !isActive ? 1 : 0,
+                      transform: showBadge && !isActive ? 'scale(1)' : 'scale(0.5)',
+                      transition: 'opacity 0.4s ease, transform 0.4s ease',
+                      pointerEvents: 'none',
+                    }}>
+                      TAP
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -247,45 +259,20 @@ export default function PackagesPricing() {
                   animationDelay: `${idx * 80}ms`,
                 }}
               >
-                {/* ─ Card Header ─ */}
-                <div
-                  style={{
-                    background: pkg.headerBg,
-                    padding: '20px 16px 16px',
-                    textAlign: 'center',
-                  }}
-                >
-                  <div style={{ fontSize: 'clamp(1.8rem,3vw,2.4rem)', lineHeight: 1, marginBottom: 8 }}>
-                    {pkg.icon}
-                  </div>
-                  <div
-                    className="font-display font-black text-white"
-                    style={{ fontSize: 'clamp(0.95rem,1.6vw,1.15rem)', letterSpacing: '0.01em', marginBottom: 10 }}
-                  >
+                {/* Card Header */}
+                <div style={{ background: pkg.headerBg, padding: '20px 16px 16px', textAlign: 'center' }}>
+                  <div style={{ fontSize: 'clamp(1.8rem,3vw,2.4rem)', lineHeight: 1, marginBottom: 8 }}>{pkg.icon}</div>
+                  <div className="font-display font-black text-white" style={{ fontSize: 'clamp(0.95rem,1.6vw,1.15rem)', letterSpacing: '0.01em', marginBottom: 10 }}>
                     {pkg.name}
                   </div>
-                  <div
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'baseline',
-                      gap: 3,
-                      background: 'rgba(255,255,255,0.15)',
-                      padding: '5px 16px',
-                      borderRadius: 40,
-                    }}
-                  >
+                  <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: 3, background: 'rgba(255,255,255,0.15)', padding: '5px 16px', borderRadius: 40 }}>
                     <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: 'clamp(0.72rem,1vw,0.82rem)', fontWeight: 600 }}>₹</span>
-                    <span
-                      className="font-display font-black text-white"
-                      style={{ fontSize: 'clamp(1.2rem,2.1vw,1.55rem)', lineHeight: 1 }}
-                    >
-                      {pkg.price}
-                    </span>
+                    <span className="font-display font-black text-white" style={{ fontSize: 'clamp(1.2rem,2.1vw,1.55rem)', lineHeight: 1 }}>{pkg.price}</span>
                     <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: 'clamp(0.62rem,0.9vw,0.72rem)', fontWeight: 500 }}>/sq.ft</span>
                   </div>
                 </div>
 
-                {/* ─ Features ─ */}
+                {/* Features */}
                 <div style={{ padding: '16px 18px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <ul style={{ listStyle: 'none', margin: 0, padding: 0, flex: 1, display: 'flex', flexDirection: 'column', gap: 9 }}>
                     {pkg.features.map((f, i) => (
@@ -293,17 +280,9 @@ export default function PackagesPricing() {
                         {f.star ? (
                           <span style={{ color: '#f59e0b', fontSize: '0.82rem', flexShrink: 0, marginTop: 1, lineHeight: 1 }}>★</span>
                         ) : (
-                          // ✅ Feature dot updated to teal
                           <span style={{ color: pkg.isLuxury ? '#d97706' : (pkg.accentColor || '#14b8a6'), fontSize: '0.72rem', flexShrink: 0, marginTop: 2, lineHeight: 1 }}>✦</span>
                         )}
-                        <span
-                          style={{
-                            fontSize: 'clamp(0.73rem,1.05vw,0.82rem)',
-                            lineHeight: 1.45,
-                            fontWeight: f.star ? 700 : 400,
-                            color: f.star ? '#111827' : '#4b5563',
-                          }}
-                        >
+                        <span style={{ fontSize: 'clamp(0.73rem,1.05vw,0.82rem)', lineHeight: 1.45, fontWeight: f.star ? 700 : 400, color: f.star ? '#111827' : '#4b5563' }}>
                           {f.text}
                         </span>
                       </li>
@@ -315,30 +294,12 @@ export default function PackagesPricing() {
           </div>
         </div>
 
-        {/* ✅ Stats bar — teal gradient */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            maxWidth: 600,
-            margin: '28px auto 0',
-            gap: 8,
-            background: 'linear-gradient(135deg, #0f766e, #0d9488)',
-            borderRadius: 16,
-            padding: '18px 24px',
-          }}
-        >
-          {[['500+','Projects Done'],['15+','Years Experience'],['98%','Satisfaction'],['100%','On-Time']].map(([n, l]) => (
+        {/* Stats bar */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', maxWidth: 600, margin: '28px auto 0', gap: 8, background: 'linear-gradient(135deg, #0f766e, #0d9488)', borderRadius: 16, padding: '18px 24px' }}>
+          {[['500+', 'Projects Done'], ['15+', 'Years Experience'], ['98%', 'Satisfaction'], ['100%', 'On-Time']].map(([n, l]) => (
             <div key={l} style={{ textAlign: 'center' }}>
-              <div
-                className="font-display font-black text-white"
-                style={{ fontSize: 'clamp(1.05rem,2.4vw,1.5rem)', lineHeight: 1 }}
-              >
-                {n}
-              </div>
-              <div style={{ color: 'rgba(204,251,241,0.9)', fontSize: 'clamp(0.6rem,0.9vw,0.7rem)', marginTop: 3 }}>
-                {l}
-              </div>
+              <div className="font-display font-black text-white" style={{ fontSize: 'clamp(1.05rem,2.4vw,1.5rem)', lineHeight: 1 }}>{n}</div>
+              <div style={{ color: 'rgba(204,251,241,0.9)', fontSize: 'clamp(0.6rem,0.9vw,0.7rem)', marginTop: 3 }}>{l}</div>
             </div>
           ))}
         </div>
@@ -346,38 +307,41 @@ export default function PackagesPricing() {
 
       <style>{`
         @media (max-width: 767px) {
-          .pkg-grid {
-            grid-template-columns: 1fr !important;
-            gap: 16px !important;
-          }
+          .pkg-grid { grid-template-columns: 1fr !important; gap: 20px !important; padding: 0 16px !important; }
         }
         @media (min-width: 768px) and (max-width: 1099px) {
-          .pkg-grid {
-            grid-template-columns: repeat(3, 1fr) !important;
-          }
+          .pkg-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
         @media (min-width: 1100px) {
-          .pkg-card {
-            transition: transform 0.24s ease, box-shadow 0.24s ease;
-          }
-          .pkg-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 44px rgba(0,0,0,0.24) !important;
-          }
+          .pkg-card { transition: transform 0.24s ease, box-shadow 0.24s ease; }
+          .pkg-card:hover { transform: translateY(-6px); box-shadow: 0 16px 44px rgba(0,0,0,0.24) !important; }
         }
 
         .pkg-card {
           opacity: 0;
           animation: slideInUp 0.5s ease forwards;
         }
-
         @keyframes slideInUp {
           from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0);    }
+          to   { opacity: 1; transform: translateY(0); }
         }
-
         .pkg-grid-wrapper {
           transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /*
+          Gentle breathing glow on the Commercial tab.
+          - 1.5s delay so it starts after the page settles
+          - Repeats 3 times then stops (stays transparent)
+        */
+        @keyframes tabHintPulse {
+          0%   { box-shadow: none; }
+          50%  { box-shadow: 0 0 0 3px rgba(13,148,136,0.25), 0 0 18px rgba(13,148,136,0.2); }
+          100% { box-shadow: none; }
+        }
+        .tab-hint-pulse {
+          animation: tabHintPulse 1.8s ease-in-out infinite;
+          border-radius: 60px;
         }
       `}</style>
     </section>

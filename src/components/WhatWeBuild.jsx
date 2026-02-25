@@ -47,14 +47,14 @@ const WhatWeBuild = () => {
         {/* Services Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div 
+            <div
               key={index}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg card-hover animate-fade-in-up"
+              className="max-w-sm mx-auto md:max-w-none w-full bg-white rounded-2xl overflow-hidden shadow-lg card-hover animate-fade-in-up"
               style={{ animationDelay: `${index * 200}ms` }}
             >
               {/* Image */}
               <div className="relative h-56 overflow-hidden">
-                <div 
+                <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 hover:scale-110"
                   style={{ backgroundImage: `url(${service.image})` }}
                 >
@@ -73,7 +73,7 @@ const WhatWeBuild = () => {
                 <p className="text-gray-600 mb-4 leading-relaxed">
                   {service.description}
                 </p>
-                
+
                 {/* Features */}
                 <div className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (

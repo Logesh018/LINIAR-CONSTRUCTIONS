@@ -20,14 +20,6 @@ const HeroBanner = () => {
       desktopImage: BannerDesktop2,
       mobileImage: BannerMobile2,
     },
-    // {
-    //   title: "Share Site Location & Sq Ft",
-    //   subtitle: "Get an Instant Quote Today",
-    //   desktopImage:
-    //     "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80",
-    //   mobileImage:
-    //     "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
-    // },
   ];
 
   useEffect(() => {
@@ -47,15 +39,14 @@ const HeroBanner = () => {
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-all duration-1000 ${
-            index === currentSlide
+          className={`absolute inset-0 transition-all duration-1000 ${index === currentSlide
               ? "opacity-100 scale-100"
               : "opacity-0 scale-105"
-          }`}
+            }`}
         >
           {/* Background Wrapper */}
           <div className="absolute inset-0">
-            
+
             {/* Desktop Image */}
             <div
               className="hidden md:block absolute inset-0 bg-cover bg-center"
@@ -77,11 +68,10 @@ const HeroBanner = () => {
             <div className="container mx-auto px-4">
               <div className="max-w-3xl">
                 <div
-                  className={`transition-all duration-1000 delay-200 ${
-                    index === currentSlide
+                  className={`transition-all duration-1000 delay-200 ${index === currentSlide
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-10"
-                  }`}
+                    }`}
                 >
                   <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-black text-white mb-6 leading-tight">
                     {slide.title}
@@ -113,11 +103,10 @@ const HeroBanner = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`transition-all duration-300 ${
-              index === currentSlide
+            className={`transition-all duration-300 ${index === currentSlide
                 ? "w-12 h-3 bg-white"
                 : "w-3 h-3 bg-white/50 hover:bg-white/75"
-            } rounded-full`}
+              } rounded-full`}
           />
         ))}
       </div>

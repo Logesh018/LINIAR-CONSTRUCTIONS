@@ -70,15 +70,16 @@ const AboutUs = () => {
           {/* Story Section */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
             <div className="animate-fade-in-up">
-              <div className="relative">
+              <div className="relative max-w-sm mx-auto md:max-w-none">
                 <img
                   src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80"
                   alt="Liniar Constructions Team"
-                  className="rounded-3xl shadow-2xl"
+                  className="rounded-3xl shadow-2xl w-full"
                 />
-                <div className="absolute -bottom-6 -right-6 gradient-emerald text-white p-6 rounded-2xl shadow-xl">
-                  <div className="text-4xl font-display font-black">2019</div>
-                  <div className="text-sm">Established</div>
+                {/* Changed right positioning and padding for mobile */}
+                <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-right-6 gradient-emerald text-white p-4 md:p-6 rounded-2xl shadow-xl">
+                  <div className="text-3xl md:text-4xl font-display font-black">2019</div>
+                  <div className="text-xs md:text-sm">Established</div>
                 </div>
               </div>
             </div>

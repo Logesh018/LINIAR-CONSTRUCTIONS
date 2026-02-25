@@ -63,7 +63,7 @@ const WhyChooseUs = () => {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 animate-fade-in-up"
+              className="max-w-sm mx-auto md:max-w-none w-full group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Icon */}

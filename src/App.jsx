@@ -8,31 +8,23 @@ import Testimonials from './components/Testimonials';
 import AboutUs from './components/AboutUs';
 import Contact from './components/Contact';
 import FAQ from './components/FAQ';
+import Footer from './components/Footer';
+import Gallery from './components/Gallery';
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden flex flex-col">
       <Navbar />
       <HeroBanner />
       <WhatWeBuild />
       <PackagesPricing />
       <WhyChooseUs />
+      <Gallery />
       <Testimonials />
       <FAQ />
       <AboutUs />
       <Contact />
-      
-      {/* Temporary Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-400">
-            © 2026 LINIAR CONSTRUCTIONS. All rights reserved.
-          </p>
-          {/* <p className="text-gray-500 text-sm mt-2">
-            Building Dreams Together
-          </p> */}
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

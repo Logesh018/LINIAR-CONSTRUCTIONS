@@ -3,7 +3,7 @@ import logo from "../../assets/LC-logo.jpeg";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // 1. Added state for mobile menu
+  const [isOpen, setIsOpen] = useState(false); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,23 +39,21 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-lg py-4' : 'bg-transparent py-6'
-    }`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg py-4' : 'bg-transparent py-6'
+      }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-transparent rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-white font-display text-2xl font-bold"><img src={logo} alt="Liniar Constructions Logo" className='rounded-3xl'/></span>
+              <span className="text-white font-display text-2xl font-bold"><img src={logo} alt="Liniar Constructions Logo" className='rounded-3xl' /></span>
             </div>
             <div>
-              <h1 className={`font-display text-2xl font-bold tracking-tight ${
-                isScrolled ? 'text-emerald-700' : 'text-white'
-              }`}>
+              <h1 className={`font-display font-bold tracking-tight ${isScrolled ? 'text-emerald-700' : 'text-white'
+                } text-lg sm:text-xl lg:text-2xl`}> {/* <-- Changed text sizes here */}
                 LINIAR CONSTRUCTIONS
               </h1>
-              <p className={`text-xs ${isScrolled ? 'text-gray-600' : 'text-blue-100'}`}>
+              <p className={`text-[10px] sm:text-xs ${isScrolled ? 'text-gray-600' : 'text-blue-100'}`}>
                 WE BUILD YOUR TRUST
               </p>
             </div>
@@ -67,11 +65,10 @@ const Navbar = () => {
               <button
                 key={index}
                 onClick={() => scrollToSection(item.id)}
-                className={`font-medium transition-all duration-300 hover:scale-105 ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-primary-600' 
+                className={`font-medium transition-all duration-300 hover:scale-105 ${isScrolled
+                    ? 'text-gray-700 hover:text-primary-600'
                     : 'text-white hover:text-blue-200'
-                } ${item.name === 'Home' ? 'font-semibold' : ''}`}
+                  } ${item.name === 'Home' ? 'font-semibold' : ''}`}
               >
                 {item.name}
               </button>
@@ -80,31 +77,27 @@ const Navbar = () => {
 
           {/* CTA Button (Desktop) */}
           <div className="hidden lg:block">
-            <button 
+            <button
               onClick={() => scrollToSection('contact-us')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg ${
-                isScrolled 
-                  ? 'bg-emerald-700 gradient-emerald text-white hover:shadow-xl' 
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg ${isScrolled
+                  ? 'bg-emerald-700 gradient-emerald text-white hover:shadow-xl'
                   : 'bg-white text-emerald-700 hover:shadow-2xl'
-              }`}
+                }`}
             >
               Get Quote
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          {/* 3. Added onClick handler and conditional icon */}
-          <button 
-            onClick={() => setIsOpen(!isOpen)} 
+          <button
+            onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden z-50 focus:outline-none"
           >
             {isOpen ? (
-              // "X" Close Icon
               <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              // Hamburger Icon
               <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -113,35 +106,30 @@ const Navbar = () => {
         </div>
 
         {/* 4. Mobile Menu Container */}
-        {/* Positioned absolute to slide down below the main bar */}
-        <div className={`lg:hidden absolute top-full left-0 w-full transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-          <div className={`container mx-auto px-4 py-4 shadow-lg ${
-            isScrolled ? 'bg-white' : 'bg-primary-700/95 backdrop-blur-sm'
+        <div className={`lg:hidden absolute top-full left-0 w-full transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
           }`}>
+          <div className={`container mx-auto px-4 py-4 shadow-lg ${isScrolled ? 'bg-white' : 'bg-primary-700/95 backdrop-blur-sm'
+            }`}>
             <div className="flex flex-col space-y-4">
               {menuItems.map((item, index) => (
                 <button
                   key={index}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-left font-medium transition-all duration-300 ${
-                    isScrolled 
-                      ? 'text-gray-700 hover:text-primary-600' 
+                  className={`text-left font-medium transition-all duration-300 ${isScrolled
+                      ? 'text-gray-700 hover:text-primary-600'
                       : 'text-white hover:text-blue-200'
-                  } ${item.name === 'Home' ? 'font-semibold' : ''}`}
+                    } ${item.name === 'Home' ? 'font-semibold' : ''}`}
                 >
                   {item.name}
                 </button>
               ))}
               {/* Mobile CTA */}
-              <button 
+              <button
                 onClick={() => scrollToSection('contact-us')}
-                className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg ${
-                  isScrolled 
-                    ? 'gradient-blue text-white hover:shadow-xl' 
+                className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg ${isScrolled
+                    ? 'gradient-blue text-white hover:shadow-xl'
                     : 'bg-white text-emerald-700 hover:shadow-2xl'
-                }`}
+                  }`}
               >
                 Get Quote
               </button>
