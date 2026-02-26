@@ -1,4 +1,7 @@
 import React from 'react';
+import Residential from "../../assets/works/LC-Residential.jpeg";
+import Commercial from "../../assets/works/LC-commercial.jpeg";
+import Renovation from "../../assets/works/LC-Renovation.jpeg";
 
 const WhatWeBuild = () => {
   const services = [
@@ -6,21 +9,21 @@ const WhatWeBuild = () => {
       icon: "🏗️",
       title: "Residential Construction",
       description: "From dream homes to apartments, we build quality living spaces with attention to every detail. Our residential projects combine modern design with traditional craftsmanship.",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+      image: Residential,
       features: ["Custom Homes", "Villas", "Apartments", "Row Houses"]
     },
     {
       icon: "🏢",
       title: "Commercial Construction",
       description: "Building robust commercial spaces that drive business success. From offices to retail spaces, we deliver projects on time and within budget.",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
+      image: Commercial,
       features: ["Office Buildings", "Retail Spaces", "Warehouses", "Industrial Units"]
     },
     {
       icon: "🔨",
       title: "Renovation Works",
       description: "Transform your existing space with our expert renovation services. We breathe new life into old structures while preserving their character.",
-      image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=600&q=80",
+      image: Renovation,
       features: ["Home Makeovers", "Office Renovations", "Structural Repairs", "Modern Upgrades"]
     }
   ];
@@ -59,7 +62,7 @@ const WhatWeBuild = () => {
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 hover:scale-110"
                   style={{ backgroundImage: `url(${service.image})` }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 to-transparent"></div>
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 to-transparent"></div> */}
                 </div>
                 <div className="absolute top-4 right-4 w-16 h-16 bg-transparent rounded-full flex items-center justify-center shadow-lg">
                   <span className="text-4xl">{service.icon}</span>
@@ -87,9 +90,9 @@ const WhatWeBuild = () => {
                   ))}
                 </div>
 
-                <button className="w-full bg-teal-700 gradient-teal-light text-white py-3 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105">
+                {/* <button className="w-full bg-teal-700 gradient-teal-light text-white py-3 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105">
                   Learn More
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

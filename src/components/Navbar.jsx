@@ -15,17 +15,17 @@ const Navbar = () => {
 
   const menuItems = [
     { name: 'Home', id: 'home' },
-    { name: 'About us', id: 'about-us' },
-    { name: 'Our services', id: 'what-we-build' },
-    { name: 'Our projects', id: 'packages-pricing' },
-    { name: 'Our gallery', id: 'testimonials' },
-    { name: 'Contact us', id: 'contact-us' }
+    { name: 'About Us', id: 'about-us-detailed' },
+    { name: 'Our Services', id: 'what-we-build' },
+    { name: 'Packages', id: 'packages-pricing' },
+    { name: 'Our Gallery', id: 'gallery' },
+    { name: 'Contact Us', id: 'contact-us' }
   ];
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // Height of navbar
+      const offset = 80; 
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -34,7 +34,6 @@ const Navbar = () => {
         behavior: 'smooth'
       });
     }
-    // 2. Close mobile menu when a link is clicked
     setIsOpen(false);
   };
 
@@ -49,7 +48,6 @@ const Navbar = () => {
               <span className="text-white font-display text-2xl font-bold"><img src={logo} alt="Liniar Constructions Logo" className='rounded-3xl' /></span>
             </div>
             <div>
-              {/* Changed: Reduced mobile text size to text-base to prevent clipping */}
               <h1 className={`font-display font-bold tracking-tight ${isScrolled ? 'text-emerald-700' : 'text-white'
                 } text-base sm:text-xl lg:text-2xl whitespace-nowrap`}>
                 LINIAR CONSTRUCTIONS
